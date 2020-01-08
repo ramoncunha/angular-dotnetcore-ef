@@ -10,11 +10,11 @@ namespace catalogo_filmes.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo Titulo é obrigatório.")]
         public string Titulo { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo Diretor é obrigatório.")]
         public string Diretor { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo Genêro é obrigatório.")]
         public string Genero { get; set; }
         public string Sinopse { get; set; }
         public int Ano { get; set; }
