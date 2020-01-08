@@ -18,13 +18,7 @@ namespace catalogo_filmes.Controllers
         /*FORMA NOVA DE UTILIZAR INJEÇÃO DE DEPENDENCIA
         Acrescentar no parâmetro do metodo: [FromServices] ApplicationContext _context*/
 
-        //private readonly IRepository<Filme> _repo;
-
-        //public FilmesController(IRepository<Filme> repo)
-        //{
-        //    _repo = repo;
-        //}
-
+        
         // GET: Filmes
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Filme>>> GetFilmes([FromServices] IRepository<Filme> _repo)

@@ -8,12 +8,6 @@ namespace catalogo_filmes.Models
 {
     public class Filme
     {
-        public Filme(string titulo, string diretor, string genero)
-        {
-            Titulo = titulo;
-            Diretor = diretor;
-            Genero = genero;
-        }
         [Key]
         public int Id { get; set; }
         [Required]
