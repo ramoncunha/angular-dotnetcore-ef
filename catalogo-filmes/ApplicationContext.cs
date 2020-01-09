@@ -11,6 +11,7 @@ namespace catalogo_filmes
     public class ApplicationContext : DbContext
     {
         public DbSet<Filme> Filmes { get; set; }
+        public DbSet<Genero> Generos { get; set; }
 
         public ApplicationContext([NotNullAttribute] DbContextOptions options) : base(options)
         {

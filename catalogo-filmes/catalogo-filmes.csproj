@@ -3,7 +3,15 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>catalogo_filmes</RootNamespace>
+    <StartupObject></StartupObject>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200109151537_Genero.cs" />
+    <Compile Remove="Migrations\20200109151537_Genero.Designer.cs" />
+    <Compile Remove="Migrations\20200109152527_Genero.cs" />
+    <Compile Remove="Migrations\20200109152527_Genero.Designer.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />

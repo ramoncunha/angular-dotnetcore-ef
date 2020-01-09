@@ -36,6 +36,7 @@ namespace catalogo_filmes
             //Dependency Injection
             services.AddTransient<ApplicationContext, ApplicationContext>();
             services.AddTransient<IRepository<Filme>, FilmeRepository>();
+            services.AddTransient<IRepository<Genero>, GeneroRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

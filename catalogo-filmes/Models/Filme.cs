@@ -15,7 +15,7 @@ namespace catalogo_filmes.Models
         [Required(ErrorMessage = "O campo Diretor é obrigatório.")]
         public string Diretor { get; set; }
         [Required(ErrorMessage = "O campo Genêro é obrigatório.")]
-        public string Genero { get; set; }
+        public Genero Genero { get; set; }
         public string Sinopse { get; set; }
         public int Ano { get; set; }
 
