@@ -1,4 +1,5 @@
 ﻿using catalogo_filmes.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,26 +18,40 @@ namespace catalogo_filmes.Repositories
 
         public IQueryable<Filme> All => _context.Set<Filme>().AsQueryable();
 
-        public void Add(params Filme[] obj)
-        {
-            _context.Set<Filme>().AddRange(obj);
-            _context.SaveChanges();
+        public void Add(Filme obj)
+        {          
+            // Verifica se o Genêro que está sendo inserido já existe no banco.
+            if(_context.Generos.Where(ng => ng.Nome == obj.Genero.Nome).Any())
+            {
+                // Se o Genêro exister, seleciona e atribui ao Genero do Filme que está sendo criado.
+                var generoExistente = _context.Generos.Where(ng => ng.Nome == obj.Genero.Nome).FirstOrDefault();
+                obj.Genero = generoExistente;
+
+                _context.Set<Filme>().Add(obj);
+                _context.SaveChanges();
+            }
+            else
+            {
+                // Se o Genêro não existir, inclui ele junto com o novo Filme.
+                _context.Set<Filme>().Add(obj);
+                _context.SaveChanges();
+            }
         }
 
-        public void Delete(params Filme[] obj)
+        public void Delete(Filme obj)
         {
-            _context.Set<Filme>().RemoveRange(obj);
+            _context.Set<Filme>().Remove(obj);
             _context.SaveChanges();
         }
 
         public async Task<Filme> FindAsync(int key)
         {
-            return await Task.Run( () => _context.Find<Filme>(key));
+            return await Task.Run(() => _context.Filmes.Where(k => k.Id == key).Include(g => g.Genero).FirstOrDefault());
         }
 
-        public void Update(params Filme[] obj)
+        public void Update(Filme obj)
         {
-            _context.Set<Filme>().UpdateRange(obj);
+            _context.Set<Filme>().Update(obj);
             _context.SaveChanges();
         }
 

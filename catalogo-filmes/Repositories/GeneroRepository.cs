@@ -17,13 +17,13 @@ namespace catalogo_filmes.Repositories
 
         public IQueryable<Genero> All => _context.Set<Genero>().AsQueryable();
 
-        public void Add(params Genero[] obj)
+        public void Add(Genero obj)
         {
             _context.Set<Genero>().AddRange(obj);
             _context.SaveChanges();
         }
 
-        public void Delete(params Genero[] obj)
+        public void Delete(Genero obj)
         {
             _context.Set<Genero>().RemoveRange(obj);
             _context.SaveChanges();
@@ -34,7 +34,7 @@ namespace catalogo_filmes.Repositories
             return await Task.Run(() => _context.Find<Genero>(key));
         }
 
-        public void Update(params Genero[] obj)
+        public void Update(Genero obj)
         {
             _context.Set<Genero>().UpdateRange(obj);
             _context.SaveChanges();

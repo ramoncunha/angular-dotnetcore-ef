@@ -9,8 +9,8 @@ namespace catalogo_filmes.Repositories
     {
         IQueryable<TEntity> All { get; }
         Task<TEntity> FindAsync(int key);
-        void Add(params TEntity[] obj);
-        void Update(params TEntity[] obj);
-        void Delete(params TEntity[] obj);
+        void Add(TEntity obj);
+        void Update(TEntity obj);
+        void Delete(TEntity obj);
     }
 }

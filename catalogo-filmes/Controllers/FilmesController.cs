@@ -14,16 +14,12 @@ namespace catalogo_filmes.Controllers
     [Route("[controller]")]
     [ApiController]
     public class FilmesController : ControllerBase
-    {
-        /*FORMA NOVA DE UTILIZAR INJEÇÃO DE DEPENDENCIA
-        Acrescentar no parâmetro do metodo: [FromServices] ApplicationContext _context*/
-
-        
+    {        
         // GET: Filmes
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Filme>>> GetFilmes([FromServices] IRepository<Filme> _repo)
         {
-            var lista = await Task.Run( () => _repo.All.ToList());
+            var lista = await Task.Run( () => _repo.All.Include(g => g.Genero).ToList());
             return Ok(lista);
         }
 
