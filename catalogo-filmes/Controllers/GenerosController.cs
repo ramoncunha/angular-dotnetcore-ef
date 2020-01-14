@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace catalogo_filmes.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class GenerosController : ControllerBase
     {

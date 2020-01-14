@@ -11,7 +11,7 @@ using catalogo_filmes.Repositories;
 
 namespace catalogo_filmes.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class FilmesController : ControllerBase
     {        
