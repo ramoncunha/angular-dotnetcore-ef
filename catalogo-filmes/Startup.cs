@@ -37,6 +37,8 @@ namespace catalogo_filmes
             services.AddTransient<ApplicationContext, ApplicationContext>();
             services.AddTransient<IRepository<Filme>, FilmeRepository>();
             services.AddTransient<IRepository<Genero>, GeneroRepository>();
+
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,10 +53,15 @@ namespace catalogo_filmes
 
             //app.UseAuthorization();
 
+            // Autorizando entrada de dados de qualquer fonte na API
+            app.UseCors(
+                options => options.SetIsOriginAllowed(x => _ = true).AllowAnyMethod().AllowAnyHeader().AllowCredentials()
+            );
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            });
+            });            
         }
     }
 }
