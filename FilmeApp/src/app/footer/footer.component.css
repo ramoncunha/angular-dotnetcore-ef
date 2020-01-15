@@ -1,0 +1,25 @@
+.wrapper{
+    margin-top: 1em;
+    margin-bottom: 0em;
+}
+.topicos {
+    width: 100%;
+    height: 50%;
+    background: #343a40!important;
+    color: rgba(255, 255, 255, 0.6) !important;
+    padding: 40px;
+}
+.topicos h6 {
+    color: #fff;
+}
+.topicos li {
+    list-style: none;
+    line-height: 3;
+}
+.rodape {
+    background: #ddd;
+    height: 5vh;
+}
+p {
+    margin-bottom: 0em;
+}

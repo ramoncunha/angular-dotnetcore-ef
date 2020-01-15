@@ -5,17 +5,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FilmesModule } from './filmes/filmes.module';
 import { ErrorsModule } from './errors/errors.module';
-import { GeneroListComponent } from './generos/genero-list/genero-list.component';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { GenerosModule } from './generos/generos.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GeneroListComponent
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FilmesModule,
+    GenerosModule,
     ErrorsModule
   ],
   providers: [],
