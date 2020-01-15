@@ -16,7 +16,7 @@ export class GeneroListComponent implements OnInit {
   ngOnInit() {
     this.generoService.listFromApi()
     .subscribe(generos => {
-      this.generos = generos; console.log(generos)
+      this.generos = generos;
     });
   }
 

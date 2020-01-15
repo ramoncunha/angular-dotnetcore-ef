@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Genero } from './index';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,6 @@ export class GeneroService {
 
     listFromApi (){
         return this.http
-        .get<Genero[]>('http://localhost:5000/api/generos');
+        .get<Genero[]>( environment.appUrl + '/generos');
     }
 }

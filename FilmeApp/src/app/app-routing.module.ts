@@ -9,8 +9,8 @@ import { GeneroListComponent } from './generos/genero-list/genero-list.component
 const routes: Routes = [
   { path: '', component: FilmeListComponent },
   { path: 'novo', component: FilmeFormComponent },
-  { path: 'generos', component: GeneroListComponent },
-  { path: '**', component: NotFoundComponent }
+  { path: 'teste', component: GeneroListComponent },
+  { path: '**', component: NotFoundComponent }  
 ];
 
 @NgModule({

@@ -14,7 +14,12 @@ export class FilmeListComponent implements OnInit {
   constructor(private filmeService: FilmeService){}
 
   ngOnInit(): void {
-    this.filmeService.listFromApi().subscribe(filmes => {this.filmes = filmes; console.log(filmes)});
+    this.filmeService.listFromApi()
+      .subscribe(
+        filmes => {
+          this.filmes = filmes;
+        }
+      );
   }
 
 }
