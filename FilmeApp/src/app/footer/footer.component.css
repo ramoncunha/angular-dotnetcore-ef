@@ -1,6 +1,7 @@
 .wrapper{
-    margin-top: 1em;
-    margin-bottom: 0em;
+    margin-top: 1em;    
+    bottom: 0em;
+    left: 0em;
 }
 .topicos {
     width: 100%;

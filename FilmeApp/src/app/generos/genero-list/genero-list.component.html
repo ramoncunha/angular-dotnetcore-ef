@@ -1,1 +1,4 @@
-<p>genero-list works!</p>
+<select class="form-control" required>
+    <option value="">Selecione...</option>
+    <option *ngFor="let genero of generos" value="{{ genero.nome }}">{{ genero.nome }}</option>
+</select>

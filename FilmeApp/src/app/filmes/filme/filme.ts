@@ -1,4 +1,4 @@
-import { Genero } from '../../generos/index';
+import { Genero } from '../../generos/genero/index';
 
 export interface Filme {
     id: number,

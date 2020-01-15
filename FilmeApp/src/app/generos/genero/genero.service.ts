@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Genero } from './genero';
+import { Genero } from './index';
 
 @Injectable({
   providedIn: 'root'

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { FilmeListComponent } from './filme-list/filme-list.component';
 import { FilmeFormComponent } from './filme-form/filme-form.component';
+import { GenerosModule } from '../generos/generos.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { FilmeFormComponent } from './filme-form/filme-form.component';
     ],
     imports: [
         HttpClientModule,
-        CommonModule
+        CommonModule,
+        GenerosModule
     ]
 })
 export class FilmesModule {}

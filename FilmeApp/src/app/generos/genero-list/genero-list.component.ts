@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Genero } from '../genero/genero';
-import { GeneroService } from '../genero/genero.service';
+import { Genero, GeneroService } from '../genero/index';
 
 @Component({
   selector: 'app-genero-list',
@@ -15,7 +14,10 @@ export class GeneroListComponent implements OnInit {
   constructor(private generoService: GeneroService) { }
 
   ngOnInit() {
-    this.generoService.listFromApi().subscribe(generos => {this.generos = generos; console.log(generos)});
+    this.generoService.listFromApi()
+    .subscribe(generos => {
+      this.generos = generos; console.log(generos)
+    });
   }
 
 }
