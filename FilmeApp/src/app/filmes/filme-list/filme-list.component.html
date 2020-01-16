@@ -1,28 +1,33 @@
 <div class="container">
   <h2>Coleção de Filmes</h2>
+
+  <app-search
+    placeholder='Título'
+    (onTyping)="filterTitulo = $event">
+  </app-search>
+
+  <app-search
+    placeholder='Genêro'
+    (onTyping)="filterGenero = $event">
+  </app-search>
+
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>Id</th>
         <th>Titulo</th>
         <th>Diretor</th>
-        <th>Genero</th>
-        <th>Sinopse</th>
-        <th>Ano</th>
         <th>Editar</th>
         <th>Excluir</th>
+        <th>Consultar</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let filme of filmes">
-        <td>{{ filme.id }}</td>
+      <tr *ngFor="let filme of filmes | filterByTitulo: filterTitulo | filterByGenero: filterGenero">
         <td>{{ filme.titulo }}</td>
         <td>{{ filme.diretor }}</td>
-        <td>{{ filme.genero.nome }}</td>
-        <td>{{ filme.sinopse }}</td>
-        <td>{{ filme.ano }}</td>
-        <td></td>
-        <td></td>
+        <td><i class="fas fa-edit"></i></td>
+        <td><i class="fas fa-trash-alt"></i></td>
+        <td><i class="fas fa-search-plus"></i></td>
       </tr>
     </tbody>
   </table>

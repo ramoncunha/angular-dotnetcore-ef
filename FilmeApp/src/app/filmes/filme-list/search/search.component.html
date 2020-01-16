@@ -1,0 +1,11 @@
+<div>
+    <form>
+        <i class="fas fa-search"></i>
+        <input
+            class="rounded"
+            type="search"
+            [placeholder]="placeholder"
+            (keyup)="debounce.next($event.target.value)"
+        >
+    </form>
+</div>

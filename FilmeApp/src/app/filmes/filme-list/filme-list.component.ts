@@ -10,6 +10,8 @@ import { Filme, FilmeService } from '../filme/index';
 export class FilmeListComponent implements OnInit {
 
   filmes: Filme[] = [];
+  filterTitulo: string = '';
+  filterGenero: string = '';
 
   constructor(private filmeService: FilmeService){}
 
