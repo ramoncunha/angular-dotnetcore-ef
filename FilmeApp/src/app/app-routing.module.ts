@@ -5,9 +5,11 @@ import { FilmeListComponent } from './filmes/filme-list/filme-list.component';
 import { FilmeFormComponent } from './filmes/filme-form/filme-form.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { GeneroListComponent } from './generos/genero-list/genero-list.component';
+import { SignInComponent } from './home/signin/signin.component';
 
 const routes: Routes = [
-  { path: '', component: FilmeListComponent },
+  { path: '', component: SignInComponent },
+  { path: 'filmes', component: FilmeListComponent },
   { path: 'novo', component: FilmeFormComponent },
   { path: 'teste', component: GeneroListComponent },
   { path: '**', component: NotFoundComponent }  

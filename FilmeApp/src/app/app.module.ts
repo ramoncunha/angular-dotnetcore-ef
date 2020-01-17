@@ -8,6 +8,7 @@ import { ErrorsModule } from './errors/errors.module';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { GenerosModule } from './generos/generos.module';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { GenerosModule } from './generos/generos.module';
     AppRoutingModule,
     FilmesModule,
     GenerosModule,
-    ErrorsModule
+    ErrorsModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

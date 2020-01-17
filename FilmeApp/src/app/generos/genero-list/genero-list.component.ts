@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { Genero, GeneroService } from '../genero/index';
 
@@ -10,6 +10,7 @@ import { Genero, GeneroService } from '../genero/index';
 export class GeneroListComponent implements OnInit {
 
   generos: Genero[] = [];
+  @Output() valueGenero = new EventEmitter<string>();
 
   constructor(private generoService: GeneroService) { }
 
@@ -18,6 +19,13 @@ export class GeneroListComponent implements OnInit {
     .subscribe(generos => {
       this.generos = generos;
     });
+
   }
 
+  onChangeSelect($event: string): void{
+
+    this.valueGenero.emit($event);
+
+  }
+  
 }

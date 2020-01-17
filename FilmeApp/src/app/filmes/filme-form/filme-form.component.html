@@ -1,27 +1,36 @@
 <div class="container">
-    <form>
+    <form [formGroup]='filmeForm' (ngSubmit)='onSubmit()'>
         <div class="form-group">
-          <label for="titutlo">Título</label>
-          <input type="text" class="form-control" id="titutlo" placeholder="Título" required>
+          <label for="titulo">Título</label>
+          <input formControlName="titulo" type="text" class="form-control" id="titulo" placeholder="Título">
+          <div *ngIf="filmeForm.get('titulo').errors?.required">
+              <app-vmessage text='Titulo obrigatório!'></app-vmessage>
+          </div>
         </div>
         <div class="form-group">
             <label for="diretor">Diretor</label>
-            <input type="text" class="form-control" id="diretor" placeholder="Diretor" required>
+            <input formControlName="diretor" type="text" class="form-control" id="diretor" placeholder="Diretor">
+        </div>
+        <div *ngIf="filmeForm.get('diretor').errors?.required">
+            <app-vmessage text='Diretor obrigatório!'></app-vmessage>
         </div>
         <div class="form-group">
             <label for="genero">Genêro</label>
-            <app-genero-list></app-genero-list>
+            <app-genero-list (valueGenero)="onChangeGenero($event)"></app-genero-list>
+        </div>
+        <div *ngIf="filmeForm.get('genero').errors?.required">
+            <app-vmessage text='Genêro obrigatório!'></app-vmessage>
         </div>
         <div class="form-group">
             <label for="sinopse">Sinopse</label>
-            <input type="text" class="form-control" id="sinopse" placeholder="Sinopse">
+            <input formControlName="sinopse" type="text" class="form-control" id="sinopse" placeholder="Sinopse">
         </div>
         <div class="form-group">
             <label for="ano">Ano</label>
-            <input type="number" class="form-control" id="ano" placeholder="Ano">
+            <input formControlName="ano" type="number" class="form-control" id="ano" placeholder="Ano">
         </div>
         
-        <button type="submit" class="btn btn-primary salvar">Salvar</button>
+        <button [disabled]="filmeForm.invalid" type="submit" class="btn btn-primary salvar">Salvar</button>
         <button type="button" class="btn btn-danger">Cancelar</button>
-      </form>
+    </form>
 </div>

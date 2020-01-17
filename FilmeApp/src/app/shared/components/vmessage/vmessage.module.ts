@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
+import { VMessageComponent } from './vmessage.component';
 import { CommonModule } from '@angular/common';
-
-import { GeneroListComponent } from './genero-list.component';
-
 
 @NgModule({
     declarations: [
-        GeneroListComponent
+        VMessageComponent
     ],
     imports: [
         CommonModule
     ],
     exports: [
-        GeneroListComponent
+        VMessageComponent
     ]
 })
-export class GeneroListModule{}
+export class VMessageModule{
+
+}
