@@ -1,16 +1,25 @@
 <div class="container">
   <h2>Coleção de Filmes</h2>
 
-  <app-search
-    placeholder='Título'
-    (onTyping)="filterTitulo = $event">
-  </app-search>
+  <div class="row" style="margin-bottom: 1%; margin-top: 1%;">
+    <div class="col-md-3">
+      <app-search
+        placeholder='Título'
+        (onTyping)="filterTitulo = $event">
+      </app-search>
+    </div>
 
-  <app-search
-    placeholder='Genêro'
-    (onTyping)="filterGenero = $event">
-  </app-search>
+    <div class="col-md-3">
+      <app-search
+        placeholder='Genêro'
+        (onTyping)="filterGenero = $event">
+      </app-search>
+    </div>
 
+    <div class="col-md-2" [routerLink]="['/novo']">
+      <i class="fas fa-video"></i>Adicionar Filme
+    </div>
+  </div>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -25,9 +34,9 @@
       <tr *ngFor="let filme of filmes | filterByTitulo: filterTitulo | filterByGenero: filterGenero">
         <td>{{ filme.titulo }}</td>
         <td>{{ filme.diretor }}</td>
-        <td><i class="fas fa-edit" [routerLink]="['/filmes/', filme.id]"></i></td>
+        <td><i class="fas fa-edit" [routerLink]="['/filmes/edit/', filme.id]"></i></td>
         <td><i class="fas fa-trash-alt" (click)="delete(filme.id, filme.titulo)"></i></td>
-        <td><i class="fas fa-search-plus"></i></td>
+        <td><i class="fas fa-search-plus" [routerLink]="['/filmes/', filme.id]"></i></td>
       </tr>
     </tbody>
   </table>
