@@ -24,14 +24,14 @@ export class FilmeService {
         .get<Filme[]>( environment.appUrl + '/filmes');
     }
 
-    add(titulo: string, diretor: string, genero: string, sinopse: string, ano: string){ 
-
+    add(titulo: string, diretor: string, genero: string, sinopse: string, ano: string) {
+        
         return this.http.post(environment.appUrl + '/filmes', JSON.stringify({
             "titulo": titulo,
             "diretor": diretor,
             "genero": {"nome": genero },
-            "sinopse": sinopse,
-            "ano": ano
+            "sinopse": sinopse == '' ? null : sinopse,
+            "ano": ano == '' ? 0 : ano
         }), this.headers);
         
     }

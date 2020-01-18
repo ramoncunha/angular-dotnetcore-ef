@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { FilmeService } from '../filme/index';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-filme-form',
@@ -13,7 +14,8 @@ export class FilmeFormComponent implements OnInit {
   filmeForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-    private filmeService: FilmeService) { }
+    private filmeService: FilmeService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.filmeForm = this.formBuilder.group({
@@ -26,7 +28,6 @@ export class FilmeFormComponent implements OnInit {
   }
 
   onSubmit(): void{
-    //console.log(JSON.stringify(this.filmeForm.value))
     this.filmeService.add(
       this.filmeForm.get('titulo').value,
       this.filmeForm.get('diretor').value,
@@ -34,7 +35,7 @@ export class FilmeFormComponent implements OnInit {
       this.filmeForm.get('sinopse').value,
       this.filmeForm.get('ano').value
       ).subscribe(
-      sucesso => console.log(sucesso),
+      sucesso => this.router.navigate(['filmes']),
       err => console.log(err)
     );
   }

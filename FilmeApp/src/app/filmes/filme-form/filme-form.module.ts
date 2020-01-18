@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FilmeFormComponent } from './filme-form.component';
 import { GeneroListModule } from 'src/app/generos/genero-list/genero-list.module';
 import { VMessageModule } from 'src/app/shared/components/vmessage/vmessage.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -14,7 +15,8 @@ import { VMessageModule } from 'src/app/shared/components/vmessage/vmessage.modu
         CommonModule,
         GeneroListModule,
         ReactiveFormsModule,
-        VMessageModule
+        VMessageModule,
+        RouterModule
     ]
 })
 export class FilmeFormModule{}
