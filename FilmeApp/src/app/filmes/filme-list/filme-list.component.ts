@@ -16,12 +16,23 @@ export class FilmeListComponent implements OnInit {
   constructor(private filmeService: FilmeService){}
 
   ngOnInit(): void {
+    this.loadList()
+  }
+
+  loadList(){
     this.filmeService.listFromApi()
       .subscribe(
         filmes => {
           this.filmes = filmes;
         }
       );
+  }
+
+  delete(id: number, titulo: string){
+    const pgt = confirm('Você tem certeza que deseja excluir o filme ' + titulo + ' (' + id +')?');
+    if(pgt){
+      this.filmeService.delete(id).subscribe(data => this.loadList());
+    }
   }
 
 }

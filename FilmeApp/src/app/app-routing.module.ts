@@ -10,6 +10,7 @@ import { SignInComponent } from './home/signin/signin.component';
 const routes: Routes = [
   { path: '', component: SignInComponent },
   { path: 'filmes', component: FilmeListComponent },
+  { path: 'filmes/:id', component: FilmeFormComponent },
   { path: 'novo', component: FilmeFormComponent },
   { path: 'teste', component: GeneroListComponent },
   { path: '**', component: NotFoundComponent }  

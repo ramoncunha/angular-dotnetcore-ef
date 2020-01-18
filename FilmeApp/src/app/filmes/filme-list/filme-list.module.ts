@@ -6,6 +6,7 @@ import { FilmeListComponent } from './filme-list.component';
 import { SearchComponent } from './search/search.component';
 import { FilterByTitulo } from './filter-by-titulo.pipe';
 import { FilterByGenero } from './filter-by-genero.pipe';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -16,6 +17,7 @@ import { FilterByGenero } from './filter-by-genero.pipe';
     ],
     imports: [
         HttpClientModule,
+        RouterModule,
         CommonModule
     ]
 })

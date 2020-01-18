@@ -25,8 +25,8 @@
       <tr *ngFor="let filme of filmes | filterByTitulo: filterTitulo | filterByGenero: filterGenero">
         <td>{{ filme.titulo }}</td>
         <td>{{ filme.diretor }}</td>
-        <td><i class="fas fa-edit"></i></td>
-        <td><i class="fas fa-trash-alt"></i></td>
+        <td><i class="fas fa-edit" [routerLink]="['/filmes/', filme.id]"></i></td>
+        <td><i class="fas fa-trash-alt" (click)="delete(filme.id, filme.titulo)"></i></td>
         <td><i class="fas fa-search-plus"></i></td>
       </tr>
     </tbody>

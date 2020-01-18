@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { Filme } from './index';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -19,9 +20,17 @@ export class FilmeService {
         })
     }
 
-    listFromApi (){
+    listFromApi(): Observable<Filme[]> {
         return this.http
         .get<Filme[]>( environment.appUrl + '/filmes');
+    }
+
+    getFilme (id: number): Observable<Filme> {
+        return this.http.get<Filme>(environment.appUrl + '/filmes/' + id);
+    }
+
+    delete(id: number): Observable<Filme>{
+        return this.http.delete<Filme>(environment.appUrl + '/filmes/' + id);
     }
 
     add(titulo: string, diretor: string, genero: string, sinopse: string, ano: string) {
