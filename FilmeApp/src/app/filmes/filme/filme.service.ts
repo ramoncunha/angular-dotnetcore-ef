@@ -34,7 +34,6 @@ export class FilmeService {
     }
 
     add(titulo: string, diretor: string, genero: string, sinopse: string, ano: string) {
-        
         return this.http.post(environment.appUrl + '/filmes', JSON.stringify({
             "titulo": titulo,
             "diretor": diretor,
@@ -42,7 +41,27 @@ export class FilmeService {
             "sinopse": sinopse == '' ? null : sinopse,
             "ano": ano == '' ? 0 : ano
         }), this.headers);
-        
+    }
+
+    edit(id: number, titulo: string, diretor: string, genero: string, sinopse: string, ano: string){
+        console.log(JSON.stringify({
+            "id": id,
+            "titulo": titulo,
+            "diretor": diretor,
+            "genero": {"nome": genero },
+            "sinopse": sinopse == '' ? null : sinopse,
+            "ano": ano == '' ? 0 : ano
+        }))
+
+        return this.http.put(environment.appUrl + '/filmes', JSON.stringify({
+            "id": id,
+            "titulo": titulo,
+            "diretor": diretor,
+            "genero": {"nome": genero },
+            "sinopse": sinopse == '' ? null : sinopse,
+            "ano": ano == '' ? 0 : ano           
+            
+        }), this.headers);
     }
 
 }

@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
-import { FilmeFormComponent } from './filme-form.component';
+import { FilmeFormEditComponent } from './filme-form-edit.component';
 import { GeneroListModule } from 'src/app/generos/genero-list/genero-list.module';
 import { VMessageModule } from 'src/app/shared/components/vmessage/vmessage.module';
-import { RouterModule } from '@angular/router';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
+
 
 @NgModule({
     declarations: [
-        FilmeFormComponent
+        FilmeFormEditComponent
     ],
     imports: [
         CommonModule,
@@ -21,4 +22,4 @@ import { ComponentsModule } from 'src/app/shared/components/components.module';
         ComponentsModule
     ]
 })
-export class FilmeFormModule{}
+export class FilmeFormEditModule{}

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { FilmeService } from '../filme/index';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-filme-form',
@@ -15,34 +15,17 @@ export class FilmeFormComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private filmeService: FilmeService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+    private router: Router) { }
 
   ngOnInit(): void {
-    
-    if(this.activatedRoute.snapshot.params.id){
-      var id = this.activatedRoute.snapshot.params.id;
-
-      this.filmeService.getFilme(id).subscribe(filme => {
-        this.filmeForm.setValue({
-          titulo: filme.titulo,
-          diretor: filme.diretor,
-          genero: filme.genero.nome,
-          sinopse: filme.sinopse,
-          ano: filme.ano
-        });
-      });
-
-    }
     
     this.filmeForm = this.formBuilder.group({
       titulo: ['', Validators.required],
       diretor: ['', Validators.required],
       genero: ['', Validators.required],
       sinopse: [''],
-      ano: ['', Validators.minLength(4)]
-    })
-
+      ano: ['', Validators.minLength(1000)]
+    });
   }
 
   onSubmit(): void{
@@ -51,7 +34,7 @@ export class FilmeFormComponent implements OnInit {
       this.filmeForm.get('diretor').value,
       this.filmeForm.get('genero').value,
       this.filmeForm.get('sinopse').value,
-      this.filmeForm.get('ano').value
+      this.filmeForm.get('ano').value,
       ).subscribe(
       sucesso => this.router.navigate(['filmes']),
       err => console.log(err)
@@ -63,10 +46,6 @@ export class FilmeFormComponent implements OnInit {
     this.filmeForm.patchValue({
       genero: $event
     })
-  }
-
-  cancelar(): void {
-    this.router.navigate(['filmes'])
   }
 
 }

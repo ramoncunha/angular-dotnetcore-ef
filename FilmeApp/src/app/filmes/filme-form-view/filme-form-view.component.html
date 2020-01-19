@@ -1,1 +1,28 @@
-<p>Funcionando!</p>
+<div class="container">
+    <div class="form-group">
+    <label for="titulo">Título</label>
+    <input disabled type="text" class="form-control" id="titulo" value="{{filme.titulo}}">
+   
+    </div>
+    <div class="form-group">
+        <label for="diretor">Diretor</label>
+        <input disabled type="text" class="form-control" id="diretor" value="{{filme.diretor}}">
+    </div>
+    
+    <div class="form-group">
+        <label for="genero">Genêro</label>
+        <input disabled type="text" class="form-control" id="genero" value="{{filme.genero.nome}}">
+    </div>
+    
+    <div class="form-group">
+        <label for="sinopse">Sinopse</label>
+        <input disabled type="text" class="form-control" id="sinopse" value="{{filme.sinopse}}">
+    </div>
+    <div class="form-group">
+        <label for="ano">Ano</label>
+        <input disabled type="text" class="form-control" id="ano" value="{{filme.ano}}">
+    </div>
+    
+    <button disabled type="submit" class="btn btn-primary salvar">Salvar</button>
+    <app-cancel-button> </app-cancel-button>
+</div>

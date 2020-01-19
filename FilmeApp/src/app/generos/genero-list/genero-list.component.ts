@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 import { Genero, GeneroService } from '../genero/index';
 
@@ -11,6 +11,7 @@ export class GeneroListComponent implements OnInit {
 
   generos: Genero[] = [];
   @Output() valueGenero = new EventEmitter<string>();
+  //@Input() valueGeneroEdition: string;
 
   constructor(private generoService: GeneroService) { }
 
@@ -19,6 +20,8 @@ export class GeneroListComponent implements OnInit {
     .subscribe(generos => {
       this.generos = generos;
     });
+
+    //console.log(this.valueGeneroEdition);
 
   }
 

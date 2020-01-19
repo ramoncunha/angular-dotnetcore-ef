@@ -9,6 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { GenerosModule } from './generos/generos.module';
 import { HomeModule } from './home/home.module';
+import { ComponentsModule } from './shared/components/components.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { HomeModule } from './home/home.module';
     AppRoutingModule,
     FilmesModule,
     GenerosModule,
+    ComponentsModule,
     ErrorsModule,
     HomeModule
   ],

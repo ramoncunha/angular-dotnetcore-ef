@@ -1,5 +1,7 @@
 <div class="container">
     <form [formGroup]='filmeForm' (ngSubmit)='onSubmit()'>
+        <input type="hidden" formControlName="id" id="id">
+
         <div class="form-group">
           <label for="titulo">Título</label>
           <input formControlName="titulo" type="text" class="form-control" id="titulo" placeholder="Título">
@@ -28,6 +30,9 @@
         <div class="form-group">
             <label for="ano">Ano</label>
             <input formControlName="ano" type="number" class="form-control" id="ano" placeholder="Ano">
+        </div>
+        <div *ngIf="filmeForm.get('ano').errors?.minlength">
+            <app-vmessage text='ano obrigatório!'></app-vmessage>
         </div>
         
         <button [disabled]="filmeForm.invalid" type="submit" class="btn btn-primary salvar">Salvar</button>
