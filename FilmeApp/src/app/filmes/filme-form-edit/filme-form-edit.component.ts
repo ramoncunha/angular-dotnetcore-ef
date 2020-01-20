@@ -29,7 +29,7 @@ export class FilmeFormEditComponent implements OnInit{
             diretor: ['', Validators.required],
             genero: ['', Validators.required],
             sinopse: [''],
-            ano: ['', Validators.minLength(4)]
+            ano: ['']
         });
 
         this.filmeService.getFilme(this.id).subscribe(filme =>{

@@ -24,7 +24,7 @@ export class FilmeFormComponent implements OnInit {
       diretor: ['', Validators.required],
       genero: ['', Validators.required],
       sinopse: [''],
-      ano: ['', Validators.minLength(1000)]
+      ano: ['']
     });
   }
 
