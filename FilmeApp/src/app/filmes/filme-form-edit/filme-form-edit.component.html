@@ -18,7 +18,7 @@
         </div>
         <div class="form-group">
             <label for="genero">Genêro</label>
-            <app-genero-list (valueGenero)="onChangeGenero($event)"></app-genero-list>
+            <app-genero-list (valueGenero)="onChangeGenero($event)" generoEdit="{{genero}}"></app-genero-list>
         </div>
         <div *ngIf="filmeForm.get('genero').errors?.required">
             <app-vmessage text='Genêro obrigatório!'></app-vmessage>

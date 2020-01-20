@@ -11,7 +11,7 @@ export class GeneroListComponent implements OnInit {
 
   generos: Genero[] = [];
   @Output() valueGenero = new EventEmitter<string>();
-  @Input() generoValue: string;
+  @Input() generoEdit: string;
 
   constructor(private generoService: GeneroService) { }
 
@@ -20,11 +20,8 @@ export class GeneroListComponent implements OnInit {
     .subscribe(generos => {
       this.generos = generos;
     });
-
-    console.log(this.generoValue);
   }
   
-
   onChangeSelect($event: string): void{
 
     this.valueGenero.emit($event);

@@ -13,6 +13,7 @@ export class FilmeFormEditComponent implements OnInit{
     
     private id: number;
     filmeForm: FormGroup;
+    genero: string;
 
     constructor(private formBuilder: FormBuilder,
         private filmeService: FilmeService,
@@ -39,8 +40,10 @@ export class FilmeFormEditComponent implements OnInit{
                 genero: filme.genero.nome,
                 sinopse: filme.sinopse,
                 ano: filme.ano
-           })
-        });        
+           });
+
+           this.genero = filme.genero.nome;
+        });
         
     }
 
