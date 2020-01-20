@@ -40,7 +40,8 @@ export class FilmeFormEditComponent implements OnInit{
                 sinopse: filme.sinopse,
                 ano: filme.ano
            })
-        });
+        });        
+        
     }
 
     onSubmit(): void{

@@ -23,9 +23,7 @@ namespace catalogo_filmes.Repositories
             // Verifica se o Genêro que está sendo inserido já existe no banco.
             if(_context.Generos.Where(ng => ng.Nome == obj.Genero.Nome).Any())
             {
-                // Se o Genêro exister, seleciona e atribui ao Genero do Filme que está sendo criado.
-                var generoExistente = _context.Generos.Where(ng => ng.Nome == obj.Genero.Nome).FirstOrDefault();
-                obj.Genero = generoExistente;
+                obj.Genero = verificaGenero(obj);
 
                 _context.Set<Filme>().Add(obj);
                 _context.SaveChanges();
@@ -51,9 +49,17 @@ namespace catalogo_filmes.Repositories
 
         public void Update(Filme obj)
         {
+            obj.Genero = verificaGenero(obj);
+
             _context.Set<Filme>().Update(obj);
             _context.SaveChanges();
         }
 
+        public Genero verificaGenero(Filme objGenero)
+        {
+            // Se o Genêro exister, seleciona e atribui ao Genero do Filme que está sendo criado.
+            var generoExistente = _context.Generos.Where(ng => ng.Nome == objGenero.Genero.Nome).FirstOrDefault();
+            return generoExistente;
+        }
     }
 }

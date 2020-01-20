@@ -31,9 +31,6 @@
             <label for="ano">Ano</label>
             <input formControlName="ano" type="number" class="form-control" id="ano" placeholder="Ano">
         </div>
-        <div *ngIf="filmeForm.get('ano').errors?.minlength">
-            <app-vmessage text='ano obrigatório!'></app-vmessage>
-        </div>
         
         <button [disabled]="filmeForm.invalid" type="submit" class="btn btn-primary salvar">Salvar</button>
         <app-cancel-button></app-cancel-button>
