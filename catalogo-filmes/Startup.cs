@@ -1,17 +1,21 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using catalogo_filmes.Models;
 using catalogo_filmes.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 
 namespace catalogo_filmes
 {
@@ -37,7 +41,23 @@ namespace catalogo_filmes
             services.AddTransient<ApplicationContext, ApplicationContext>();
             services.AddTransient<IRepository<Filme>, FilmeRepository>();
             services.AddTransient<IRepository<Genero>, GeneroRepository>();
+            services.AddSingleton<IConfiguration>(Configuration);
 
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationContext>()
+                .AddDefaultTokenProviders();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Key"])),
+                ClockSkew = TimeSpan.Zero
+            });
+
+            //Permitindo outras fontes acessar a API
             services.AddCors();
         }
 
@@ -51,7 +71,9 @@ namespace catalogo_filmes
 
             app.UseRouting();
 
-            //app.UseAuthorization();
+            app.UseAuthentication();
+
+            app.UseAuthorization();
 
             // Autorizando entrada de dados de qualquer fonte na API
             app.UseCors(

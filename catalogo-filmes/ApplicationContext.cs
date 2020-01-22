@@ -1,4 +1,5 @@
 ﻿using catalogo_filmes.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace catalogo_filmes
 {
-    public class ApplicationContext : DbContext
+    public class ApplicationContext : IdentityDbContext
     {
         public DbSet<Filme> Filmes { get; set; }
         public DbSet<Genero> Generos { get; set; }

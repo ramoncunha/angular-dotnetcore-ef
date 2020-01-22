@@ -8,11 +8,13 @@ using Microsoft.EntityFrameworkCore;
 using catalogo_filmes;
 using catalogo_filmes.Models;
 using catalogo_filmes.Repositories;
+using Microsoft.AspNetCore.Authorization;
 
 namespace catalogo_filmes.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class FilmesController : ControllerBase
     {        
         // GET: Filmes
