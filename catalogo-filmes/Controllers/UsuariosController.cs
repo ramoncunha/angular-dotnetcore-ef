@@ -76,23 +76,8 @@ namespace catalogo_filmes.Controllers
 
         private UserToken BuildToken(Usuario model)
         {
-            //var claims = new[]
-            //{
-            //    new Claim(JwtRegisteredClaimNames.UniqueName, model.Email),
-            //    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-            //};
-
-            //var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Key"]));
-            //var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
-            //var expiration = DateTime.UtcNow.AddHours(24);
-            //JwtSecurityToken token = new JwtSecurityToken(
-            //    issuer: null,
-            //    audience: null,
-            //    claims: claims,
-            //    expires: expiration,
-            //    signingCredentials: cred);
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(configuration["JWT:Key"]);
+            var key = Encoding.UTF8.GetBytes(configuration["JWT:Key"]);
             var expiration = DateTime.UtcNow.AddHours(24);
             var tokenDescriptor = new SecurityTokenDescriptor()
             {
@@ -102,7 +87,7 @@ namespace catalogo_filmes.Controllers
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
                 }),
                 Expires = expiration,
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256)
             };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
