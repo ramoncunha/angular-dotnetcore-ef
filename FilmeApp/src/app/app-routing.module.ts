@@ -9,6 +9,7 @@ import { FilmeFormViewComponent } from './filmes/filme-form-view/filme-form-view
 import { FilmeFormEditComponent } from './filmes/filme-form-edit/filme-form-edit.component';
 import { AuthGuard } from './core/auth/auth.guard';
 import { SignUpComponent } from './home/signup/signup.component';
+import { FilmeAuthGuard } from './core/auth/filme.auth.guard';
 
 const routes: Routes = [
   {
@@ -17,14 +18,14 @@ const routes: Routes = [
     canActivate: [ AuthGuard ]
   },
   {
-    path: 'registrar',
+    path: 'register',
     component: SignUpComponent,
     canActivate: [ AuthGuard ]
   },
-  { path: 'filmes', component: FilmeListComponent },
-  { path: 'filmes/:id', component: FilmeFormViewComponent },
-  { path: 'new', component: FilmeFormComponent },
-  { path: 'filmes/edit/:id', component: FilmeFormEditComponent },
+  { path: 'filmes', component: FilmeListComponent, canActivate: [ FilmeAuthGuard ]},
+  { path: 'filmes/:id', component: FilmeFormViewComponent, canActivate: [ FilmeAuthGuard ] },
+  { path: 'new', component: FilmeFormComponent, canActivate: [ FilmeAuthGuard ] },
+  { path: 'filmes/edit/:id', component: FilmeFormEditComponent, canActivate: [ FilmeAuthGuard ] },
   { path: '**', component: NotFoundComponent }
 ];
 

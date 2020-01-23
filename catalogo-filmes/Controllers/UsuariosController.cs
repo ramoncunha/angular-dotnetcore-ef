@@ -79,7 +79,7 @@ namespace catalogo_filmes.Controllers
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.UTF8.GetBytes(configuration["JWT:Key"]);
-            var expiration = DateTime.UtcNow.AddHours(2);
+            var expiration = DateTime.UtcNow.AddHours(10);
             var tokenDescriptor = new SecurityTokenDescriptor()
             {
                 Subject = new ClaimsIdentity(new Claim[]

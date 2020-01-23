@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { GenerosModule } from './generos/generos.module';
 import { HomeModule } from './home/home.module';
 import { ComponentsModule } from './shared/components/components.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ComponentsModule } from './shared/components/components.module';
     GenerosModule,
     ComponentsModule,
     ErrorsModule,
-    HomeModule
+    HomeModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

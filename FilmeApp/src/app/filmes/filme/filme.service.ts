@@ -18,21 +18,20 @@ export class FilmeService {
     header = {
         headers: new HttpHeaders({
             'Content-Type': 'application/json',
-            'Authorization': this.userService.getToken()
         })
     }
 
     listFromApi(): Observable<Filme[]> {
         return this.http
-        .get<Filme[]>( environment.appUrl + '/filmes', this.header);
+        .get<Filme[]>( environment.appUrl + '/filmes');
     }
 
     getFilme (id: number): Observable<Filme> {
-        return this.http.get<Filme>(environment.appUrl + '/filmes/' + id, this.header);
+        return this.http.get<Filme>(environment.appUrl + '/filmes/' + id);
     }
 
     delete(id: number): Observable<Filme>{
-        return this.http.delete<Filme>(environment.appUrl + '/filmes/' + id, this.header);
+        return this.http.delete<Filme>(environment.appUrl + '/filmes/' + id);
     }
 
     add(titulo: string, diretor: string, genero: string, sinopse: string, ano: string) {

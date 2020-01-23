@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/core/auth/auth.service';
 export class SignInComponent implements OnInit {
 
   loginForm: FormGroup;
-  @ViewChild('emailInput', {static: false}) emailInput: ElementRef<HTMLInputElement>;
+  @ViewChild('emailInput', {static: true}) emailInput: ElementRef<HTMLInputElement>;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router){ }
 
@@ -21,6 +21,7 @@ export class SignInComponent implements OnInit {
           email: ['', Validators.required],
           password: ['', Validators.required]
       });
+      this.emailInput.nativeElement.focus();
   }
 
   login(){

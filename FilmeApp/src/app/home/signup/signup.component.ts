@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { User } from 'src/app/core/user/user';
@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class SignUpComponent implements OnInit {
     
     signUpForm: FormGroup;
+    @ViewChild('emailInput', {static: true}) emailInput: ElementRef<HTMLInputElement>;
     
     constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router){ }
     
@@ -24,8 +25,8 @@ export class SignUpComponent implements OnInit {
             ],
             password: ['', Validators.required]
         });
+        this.emailInput.nativeElement.focus();
     }
-
 
     signUp(){
         const newUser = this.signUpForm.getRawValue() as User;
