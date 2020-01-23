@@ -2,7 +2,7 @@
 
 <div class="container">
     
-    <form [formGroup]="signUpForm" class="form mt-4">
+    <form [formGroup]="signUpForm" (submit)="signUp()" class="form mt-4">
 
         <div class="form-group">
             <input formControlName="email" placeholder="E-mail" class="form-control" autofocus>

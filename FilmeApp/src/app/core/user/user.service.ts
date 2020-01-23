@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { TokenService } from '../token/token.service';
 import { User } from './user';
 import * as jwt_decode from 'jwt-decode';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -11,11 +13,15 @@ import * as jwt_decode from 'jwt-decode';
 export class UserService{
 
     private userSubject = new BehaviorSubject<User>(null);
+    // Header necessário para passar para requisição API.
+    headers = {
+        headers: new HttpHeaders({
+            'Content-Type': 'application/json'
+        })
+    }
 
-    constructor(private tokenService: TokenService){
-
+    constructor(private tokenService: TokenService, private http: HttpClient){
        this.tokenService.hasToken() && this.decodeAndNotify();
-
     }
 
     setToken(token: string){
@@ -44,5 +50,12 @@ export class UserService{
 
     isLogged(){
         return this.tokenService.hasToken();
+    }
+
+    signUp(newUser: User){
+        return this.http.post(environment.appUrl + '/usuarios/register',
+            newUser,
+            this.headers
+        )
     }
 }
