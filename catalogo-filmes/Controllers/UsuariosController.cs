@@ -49,8 +49,8 @@ namespace catalogo_filmes.Controllers
 
                 if (result.Succeeded)
                 {
-                    //await signInManager.SignInAsync(user, isPersistent: false);
-                    return BuildToken(model);
+                    Response.Headers.Add("Authorization", BuildToken(model).Token);
+                    return Ok();
                 }
             }
 
@@ -66,7 +66,8 @@ namespace catalogo_filmes.Controllers
 
             if (result.Succeeded)
             {
-                return BuildToken(model);
+                Response.Headers.Add("Authorization", BuildToken(model).Token);
+                return Ok();
             }
             else
             {
@@ -78,7 +79,7 @@ namespace catalogo_filmes.Controllers
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.UTF8.GetBytes(configuration["JWT:Key"]);
-            var expiration = DateTime.UtcNow.AddHours(24);
+            var expiration = DateTime.UtcNow.AddHours(2);
             var tokenDescriptor = new SecurityTokenDescriptor()
             {
                 Subject = new ClaimsIdentity(new Claim[]

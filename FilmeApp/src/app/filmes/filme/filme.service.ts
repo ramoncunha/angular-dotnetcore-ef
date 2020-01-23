@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Filme } from './index';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { UserService } from 'src/app/core/user/user.service';
 
 
 @Injectable({
@@ -11,26 +12,27 @@ import { Observable } from 'rxjs';
 })
 export class FilmeService {
 
-    constructor(private http: HttpClient){}
+    constructor(private http: HttpClient, private userService: UserService){}
 
     // Header necessário para passar para requisição API.
-    headers = {
+    header = {
         headers: new HttpHeaders({
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': this.userService.getToken()
         })
     }
 
     listFromApi(): Observable<Filme[]> {
         return this.http
-        .get<Filme[]>( environment.appUrl + '/filmes');
+        .get<Filme[]>( environment.appUrl + '/filmes', this.header);
     }
 
     getFilme (id: number): Observable<Filme> {
-        return this.http.get<Filme>(environment.appUrl + '/filmes/' + id);
+        return this.http.get<Filme>(environment.appUrl + '/filmes/' + id, this.header);
     }
 
     delete(id: number): Observable<Filme>{
-        return this.http.delete<Filme>(environment.appUrl + '/filmes/' + id);
+        return this.http.delete<Filme>(environment.appUrl + '/filmes/' + id, this.header);
     }
 
     add(titulo: string, diretor: string, genero: string, sinopse: string, ano: string) {
@@ -40,19 +42,10 @@ export class FilmeService {
             "genero": {"nome": genero },
             "sinopse": sinopse == '' ? null : sinopse,
             "ano": ano == '' ? 0 : ano
-        }), this.headers);
+        }), this.header);
     }
 
     edit(id: number, titulo: string, diretor: string, genero: string, sinopse: string, ano: string){
-        console.log(JSON.stringify({
-            "id": id,
-            "titulo": titulo,
-            "diretor": diretor,
-            "genero": {"nome": genero },
-            "sinopse": sinopse == '' ? null : sinopse,
-            "ano": ano == '' ? 0 : ano
-        }))
-
         return this.http.put(environment.appUrl + '/filmes', JSON.stringify({
             "id": id,
             "titulo": titulo,
@@ -61,7 +54,7 @@ export class FilmeService {
             "sinopse": sinopse == '' ? null : sinopse,
             "ano": ano == '' ? 0 : ano           
             
-        }), this.headers);
+        }), this.header);
     }
 
 }

@@ -6,12 +6,12 @@
 .topicos {
     width: 100%;
     height: 50%;
-    background: #343a40!important;
-    color: rgba(255, 255, 255, 0.6) !important;
+    background: #f8f9fa!important;
+    color: #343a40 !important;
     padding: 40px;
 }
 .topicos h6 {
-    color: #fff;
+    color: #000;
 }
 .topicos li {
     list-style: none;

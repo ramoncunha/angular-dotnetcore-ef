@@ -37,6 +37,9 @@ namespace catalogo_filmes
             var connectionString = Configuration.GetConnectionString("Default");
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connectionString));
 
+            //Permitindo outras fontes acessar a API
+            services.AddCors();
+
             //Dependency Injection
             services.AddTransient<ApplicationContext, ApplicationContext>();
             services.AddTransient<IRepository<Filme>, FilmeRepository>();
@@ -61,9 +64,6 @@ namespace catalogo_filmes
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Key"]))
                 };
             });
-
-            //Permitindo outras fontes acessar a API
-            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -82,7 +82,10 @@ namespace catalogo_filmes
 
             // Autorizando entrada de dados de qualquer fonte na API
             app.UseCors(
-                options => options.SetIsOriginAllowed(x => _ = true).AllowAnyMethod().AllowAnyHeader().AllowCredentials()
+                options => {
+                    options.SetIsOriginAllowed(x => _ = true).AllowAnyMethod().AllowCredentials().AllowAnyHeader();
+                    options.WithExposedHeaders("Authorization");
+                }
             );
 
             app.UseEndpoints(endpoints =>

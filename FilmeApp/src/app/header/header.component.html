@@ -1,3 +1,14 @@
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-light bg-light">
     <span class="navbar-brand" [routerLink]="['/']" >FilmesApp</span>
+    <div *ngIf="(user$ | async) as user; else login">
+        <i class="fas fa-user-shield"></i>
+        <a>{{ user?.unique_name }}</a>
+        <a class="ml-1" (click)="logout()">(Logout)</a>
+    </div>
+
+    <ng-template #login>
+        <span class="navbar-text">
+            <a [routerLink]="['']">Fazer login</a>
+        </span>
+    </ng-template>
 </nav>

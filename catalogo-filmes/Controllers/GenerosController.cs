@@ -1,5 +1,6 @@
 ﻿using catalogo_filmes.Models;
 using catalogo_filmes.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace catalogo_filmes.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class GenerosController : ControllerBase
     {
         // GET: Generos

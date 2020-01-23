@@ -1,28 +1,26 @@
-<p>Login!</p>
-<!-- <h4 class="text-center">Login</h4>
+<h4 class="text-center">Login</h4>
 
-<form >
+<div class="container">
+    <form [formGroup]="loginForm" (submit)="login()">
 
-    <div class="form-group">
-        <input 
-            class="form-control" 
-            placeholder="user name" 
-            autofocus>  
-    </div>
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input #emailInput
+            formControlName="email" id="email" class="form-control" placeholder="E-mail" autofocus>
+            <app-vmessage *ngIf="loginForm.get('email').errors?.required" text='E-mail necessário!'></app-vmessage>
+        </div>
 
-    <div class="form-group">
-        <input
-            type="password" 
-            class="form-control" 
-            placeholder="password">              
-    </div>
+        <div class="form-group">
+            <label for="email">Senha</label>
+            <input formControlName="password" type="password" class="form-control" placeholder="senha">
+            <app-vmessage *ngIf="loginForm.get('password').errors?.required" text='Senha necessária!'></app-vmessage>
+        </div>
 
-    <button 
-        type="submit" 
-        class="btn btn-primary btn-block">
-        login
-    </button>
+        <button type="submit" class="btn btn-primary btn-block">
+            Login
+        </button>
 
-</form>
-
-<p>Not a user?<a>Register now</a></p> -->
+    </form>
+    
+    <p>Não tem um cadastro? <a [routerLink]="['registrar']">Registre-se agora!</a></p>
+</div>

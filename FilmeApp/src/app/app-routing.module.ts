@@ -7,14 +7,25 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { SignInComponent } from './home/signin/signin.component';
 import { FilmeFormViewComponent } from './filmes/filme-form-view/filme-form-view.component';
 import { FilmeFormEditComponent } from './filmes/filme-form-edit/filme-form-edit.component';
+import { AuthGuard } from './core/auth/auth.guard';
+import { SignUpComponent } from './home/signup/signup.component';
 
 const routes: Routes = [
-  { path: '', component: SignInComponent },
+  {
+    path: '',
+    component: SignInComponent,
+    canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'registrar',
+    component: SignUpComponent,
+    canActivate: [ AuthGuard ]
+  },
   { path: 'filmes', component: FilmeListComponent },
   { path: 'filmes/:id', component: FilmeFormViewComponent },
   { path: 'new', component: FilmeFormComponent },
   { path: 'filmes/edit/:id', component: FilmeFormEditComponent },
-  { path: '**', component: NotFoundComponent }  
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
