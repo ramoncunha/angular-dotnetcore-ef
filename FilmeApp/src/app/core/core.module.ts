@@ -8,7 +8,8 @@ import { RequestInterceptor } from './auth/request.interceptor';
         CommonModule
     ],
     providers: [
-        {   provide: HTTP_INTERCEPTORS,
+        {   
+            provide: HTTP_INTERCEPTORS,
             useClass: RequestInterceptor,
             multi: true
         }
